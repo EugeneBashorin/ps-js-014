@@ -5,11 +5,16 @@ const webpack = require('webpack')
 
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, './src/index.js'),
+        // main: path.resolve(__dirname, './src/index.js'),
+        gallery: path.resolve(__dirname, './src/01-gallery.js'),
+        video: path.resolve(__dirname, './src/02-video.js'),
+        feedback: path.resolve(__dirname, './src/03-feedback.js'),
     },
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: '[name].bundle.js',
+        filename: "[name].js",
+        // filename: '[name].bundle.js',
+        library: "[name]"
     },
     mode: 'development',
     devServer: {
@@ -23,9 +28,24 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'webpack template / HTML work',
-            template: path.resolve(__dirname, './src/template.html'), // template file
+            title: 'index.html',
+            template: path.resolve(__dirname, './src/index.html'),
             filename: 'index.html', // output file
+        }),
+        new HtmlWebpackPlugin({
+            title: '01-gallery.html',
+            template: path.resolve(__dirname, './src/01-gallery.html'),
+            filename: '01-gallery.html', // output file
+        }),
+        new HtmlWebpackPlugin({
+            title: '02-video.html',
+            template: path.resolve(__dirname, './src/02-video.html'),
+            filename: '02-video.html', // output file
+        }),
+        new HtmlWebpackPlugin({
+            title: '03-feedback.html',
+            template: path.resolve(__dirname, './src/03-feedback.html'),
+            filename: '03-feedback.html', // output file
         }),
         new CleanWebpackPlugin(),
         new webpack.HotModuleReplacementPlugin(),
